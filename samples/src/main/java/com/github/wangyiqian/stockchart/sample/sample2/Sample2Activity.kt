@@ -43,9 +43,9 @@ import com.github.wangyiqian.stockchart.sample.sample2.custom.CustomChartConfig
 import com.github.wangyiqian.stockchart.sample.sample2.custom.CustomChartFactory
 import com.github.wangyiqian.stockchart.util.DimensionUtil
 import com.github.wangyiqian.stockchart.util.NumberFormatUtil
-import kotlinx.android.synthetic.main.activity_sample2.*
-import kotlinx.android.synthetic.main.activity_sample3.*
-import kotlinx.android.synthetic.main.layout_sample2_option_buttons.*
+//import kotlinx.android.synthetic.main.activity_sample2.*
+//import kotlinx.android.synthetic.main.activity_sample3.*
+//import kotlinx.android.synthetic.main.layout_sample2_option_buttons.*
 
 /**
  * @author wangyiqian E-mail: wangyiqian9891@gmail.com

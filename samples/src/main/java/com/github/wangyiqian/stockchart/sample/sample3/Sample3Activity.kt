@@ -23,12 +23,13 @@ import com.github.wangyiqian.stockchart.entities.IKEntity
 import com.github.wangyiqian.stockchart.entities.KEntity
 import com.github.wangyiqian.stockchart.sample.DataMock
 import com.github.wangyiqian.stockchart.sample.R
+import com.github.wangyiqian.stockchart.sample.databinding.ActivitySample3Binding
 import com.github.wangyiqian.stockchart.sample.sample3.activechart.ActiveChartConfig
 import com.github.wangyiqian.stockchart.sample.sample3.activechart.ActiveChartFactory
 import com.github.wangyiqian.stockchart.sample.sample3.activechart.OnActiveIndustryClickListener
 import com.github.wangyiqian.stockchart.sample.sample3.data.ActiveInfo
 import com.github.wangyiqian.stockchart.util.DimensionUtil
-import kotlinx.android.synthetic.main.activity_sample3.*
+//import kotlinx.android.synthetic.main.activity_sample3.*
 import java.util.*
 
 /**
@@ -53,9 +54,12 @@ class Sample3Activity : AppCompatActivity() {
      */
     private lateinit var activeChartConfig: ActiveChartConfig
 
+    private lateinit var binding: ActivitySample3Binding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sample3)
+        binding = ActivitySample3Binding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initStockChart()
 
@@ -121,10 +125,10 @@ class Sample3Activity : AppCompatActivity() {
         )
 
         stockChartConfig.apply {
-            stockChart.setConfig(this)
+            binding.stockChart.setConfig(this)
             // 图的背景色
-            backgroundColor = Color.parseColor("#FFFFFF")
-            addChildCharts(ActiveChartFactory(stockChart, activeChartConfig))
+            // binding.stockChart.backgroundColor = Color.parseColor("#FFFFFF")
+            addChildCharts(ActiveChartFactory(binding.stockChart, activeChartConfig))
         }
     }
 
@@ -143,7 +147,7 @@ class Sample3Activity : AppCompatActivity() {
                 }
             }
             stockChartConfig.setKEntities(kEntities)
-            stockChart.notifyChanged()
+            binding.stockChart.notifyChanged()
         }
     }
 }

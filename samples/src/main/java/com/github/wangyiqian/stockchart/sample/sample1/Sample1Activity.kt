@@ -23,7 +23,7 @@ import com.github.wangyiqian.stockchart.childchart.timebar.TimeBarFactory
 import com.github.wangyiqian.stockchart.entities.IKEntity
 import com.github.wangyiqian.stockchart.sample.DataMock
 import com.github.wangyiqian.stockchart.sample.R
-import kotlinx.android.synthetic.main.activity_sample1.*
+// import kotlinx.android.synthetic.main.activity_sample1.*
 
 /**
  * @author wangyiqian E-mail: wangyiqian9891@gmail.com
