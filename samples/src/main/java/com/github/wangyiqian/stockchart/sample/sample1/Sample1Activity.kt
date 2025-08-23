@@ -15,6 +15,7 @@ package com.github.wangyiqian.stockchart.sample.sample1
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.github.wangyiqian.stockchart.StockChartConfig
 import com.github.wangyiqian.stockchart.childchart.kchart.KChartConfig
 import com.github.wangyiqian.stockchart.childchart.kchart.KChartFactory
@@ -23,6 +24,9 @@ import com.github.wangyiqian.stockchart.childchart.timebar.TimeBarFactory
 import com.github.wangyiqian.stockchart.entities.IKEntity
 import com.github.wangyiqian.stockchart.sample.DataMock
 import com.github.wangyiqian.stockchart.sample.R
+import com.github.wangyiqian.stockchart.sample.databinding.ActivitySample1Binding
+import com.github.wangyiqian.stockchart.sample.databinding.ActivitySample3Binding
+
 // import kotlinx.android.synthetic.main.activity_sample1.*
 
 /**
@@ -30,23 +34,27 @@ import com.github.wangyiqian.stockchart.sample.R
  * @version 创建时间: 2021/2/26
  */
 class Sample1Activity : AppCompatActivity() {
+    private lateinit var binding: ActivitySample1Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sample1)
+        // setContentView(R.layout.activity_sample1)
+        binding = ActivitySample1Binding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // 总配置
         val stockChartConfig = StockChartConfig()
-        stock_chart.setConfig(stockChartConfig)
+        binding.stockChart.setConfig(stockChartConfig)
 
         // K线图的配置与工厂
         val kChartConfig = KChartConfig()
-        val kChartFactory = KChartFactory(stockChart = stock_chart, childChartConfig = kChartConfig)
+        val kChartFactory =
+            KChartFactory(stockChart = binding.stockChart, childChartConfig = kChartConfig)
 
         // 时间条图的配置与工厂
         val timeBarConfig = TimeBarConfig()
         val timeBarFactory =
-            TimeBarFactory(stockChart = stock_chart, childChartConfig = timeBarConfig)
+            TimeBarFactory(stockChart = binding.stockChart, childChartConfig = timeBarConfig)
 
         // 将需要显示的子图的工厂加入全局配置
         stockChartConfig.addChildCharts(kChartFactory, timeBarFactory)
@@ -65,7 +73,7 @@ class Sample1Activity : AppCompatActivity() {
             )
 
             // 通知更新K线图
-            stock_chart.notifyChanged()
+            binding.stockChart.notifyChanged()
         }
 
     }

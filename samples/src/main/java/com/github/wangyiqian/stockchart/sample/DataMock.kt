@@ -20,7 +20,12 @@ import com.github.wangyiqian.stockchart.entities.KEntity
 import com.github.wangyiqian.stockchart.sample.sample3.data.ActiveChartKEntity
 import com.github.wangyiqian.stockchart.sample.sample3.data.ActiveInfo
 import com.github.wangyiqian.stockchart.sample.sample3.data.ActiveResponse
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+//import kotlinx.coroutines.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -37,6 +42,7 @@ object DataMock {
     private const val MOCK_DELAY = 0L // 模拟耗时
 
     fun loadDayTimeData(context: Context, callback: (List<IKEntity>) -> Unit) {
+
         MainScope().launch {
             delay(MOCK_DELAY)
             callback.invoke(loadDataFromTimeDataAsserts(context, "mock_time_data_day.txt"))

@@ -20,13 +20,13 @@ plugins {
 group='com.github.wangyiqian'
 
 android {
-    compileSdkVersion 32
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 34
+    // buildToolsVersion "29.0.3"
 //    namespace 'com.github.wangyiqian.stockchart'
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 32
+        targetSdkVersion 34
     }
 
     buildTypes {
